@@ -1,0 +1,26 @@
+services:
+  credit-service:
+    build: ./credit-application-service
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - RISK_CENTRAL_URL=http://risk-service:8081
+    depends_on:
+      - risk-service
+    networks:
+      - credit-network
+
+  risk-service:
+    build: ./risk-central-mock-service
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - SERVER_PORT=8081
+    networks:
+      - credit-network
+
+networks:
+  credit-network:
+    driver: bridge
