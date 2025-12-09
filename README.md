@@ -50,3 +50,4 @@ curl -X POST http://localhost:8080/api/credit/request \
 *   `/credit-application-service`: Código fuente del servicio de créditos.
 *   `/risk-central-mock-service`: Código fuente del simulador de riesgo.
 # credit-docker
+# docker-credit
